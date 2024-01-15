@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperBooks", "SuperBooks\SuperBooks.csproj", "{E2A9DDB0-1A34-43FB-AF10-9338F0F6684F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperBooks.Core", "SuperBooks.Core\SuperBooks.Core.csproj", "{781DC653-25A2-4467-9D18-0B2ED425E60D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperBooks.Interfaces", "SuperBooks.Interfaces\SuperBooks.Interfaces.csproj", "{347F2896-3322-4AEE-9077-33C5A6075F2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperBooks.DAOMock1", "SuperBooks.DAOMock1\SuperBooks.DAOMock1.csproj", "{F90368E7-B008-4FAA-A67E-B598F79B9B87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperBooks.BLC", "SuperBooks.BLC\SuperBooks.BLC.csproj", "{F283CEAE-AA4D-467E-AA41-ECA3FE42E15D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperBooks.DAOMock2", "SuperBooks.DAOMock2\SuperBooks.DAOMock2.csproj", "{6EA84775-5123-4F36-9DA1-DBA3F7C6EA52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2A9DDB0-1A34-43FB-AF10-9338F0F6684F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A9DDB0-1A34-43FB-AF10-9338F0F6684F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A9DDB0-1A34-43FB-AF10-9338F0F6684F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A9DDB0-1A34-43FB-AF10-9338F0F6684F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{781DC653-25A2-4467-9D18-0B2ED425E60D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{781DC653-25A2-4467-9D18-0B2ED425E60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{781DC653-25A2-4467-9D18-0B2ED425E60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{781DC653-25A2-4467-9D18-0B2ED425E60D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347F2896-3322-4AEE-9077-33C5A6075F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347F2896-3322-4AEE-9077-33C5A6075F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347F2896-3322-4AEE-9077-33C5A6075F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347F2896-3322-4AEE-9077-33C5A6075F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90368E7-B008-4FAA-A67E-B598F79B9B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90368E7-B008-4FAA-A67E-B598F79B9B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90368E7-B008-4FAA-A67E-B598F79B9B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90368E7-B008-4FAA-A67E-B598F79B9B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F283CEAE-AA4D-467E-AA41-ECA3FE42E15D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F283CEAE-AA4D-467E-AA41-ECA3FE42E15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F283CEAE-AA4D-467E-AA41-ECA3FE42E15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F283CEAE-AA4D-467E-AA41-ECA3FE42E15D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA84775-5123-4F36-9DA1-DBA3F7C6EA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA84775-5123-4F36-9DA1-DBA3F7C6EA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA84775-5123-4F36-9DA1-DBA3F7C6EA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA84775-5123-4F36-9DA1-DBA3F7C6EA52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9A64188-918E-448C-B4AE-CB6D01ED1F9F}
+	EndGlobalSection
+EndGlobal
