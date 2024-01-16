@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperBooks.DAOMock2.BO
 {
-    public class Producer : IProducer
+    public class Producer : IPublisher
     {
         public int ID { get; set; }
         public string Name { get; set; }

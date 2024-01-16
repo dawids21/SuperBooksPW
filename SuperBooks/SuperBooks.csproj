@@ -15,7 +15,6 @@
 		<ProjectReference Include="..\SuperBooks.BLC\SuperBooks.BLC.csproj" />
 		<ProjectReference Include="..\SuperBooks.Core\SuperBooks.Core.csproj" />
 		<ProjectReference Include="..\SuperBooks.DAOMock1\SuperBooks.DAOMock1.csproj" />
-		<ProjectReference Include="..\SuperBooks.DAOMock2\SuperBooks.DAOMock2.csproj" />
 		<ProjectReference Include="..\SuperBooks.Interfaces\SuperBooks.Interfaces.csproj" />
 	</ItemGroup>
 

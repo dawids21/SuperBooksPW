@@ -8,9 +8,17 @@ namespace SuperBooks.Interfaces
 {
     public interface IDAO
     {
-        IEnumerable<IProducer> GetAllProducers();
-        IEnumerable<ICar> GetAllCars();
-        IProducer CreateNewProducer();
-        ICar CreateNewCar();
+        IEnumerable<IPublisher> GetAllPublishers();
+        IEnumerable<IBook> GetAllBooks();
+        IPublisher CreateNewPublisher(IPublisher publisher);
+        IBook CreateNewBook(IBook book);
+        void EditPublisher(IPublisher publisher);
+        void DeletePublisher(IPublisher publisher);
+        void EditBook(IBook book);
+        void DeleteBook(IBook book);
+        IBook GetBook(int id);
+        IPublisher GetPublisher(int id);
+
+        //TODO get all years publishers and books
     }
 }

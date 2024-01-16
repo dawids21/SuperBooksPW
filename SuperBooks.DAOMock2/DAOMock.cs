@@ -10,62 +10,62 @@ namespace SuperBooks.DAOMock2
 {
     public class DAOMock : IDAO
     {
-        private List<IProducer> producers;
-        private List<ICar> cars;
+        private List<IPublisher> producers;
+        private List<IBook> cars;
 
         public DAOMock()
         {
-            producers = new List<IProducer>()
+            producers = new List<IPublisher>()
             {
                 new BO.Producer() { ID = 1, Name = "Skoda" },
                 new BO.Producer() { ID = 2, Name = "Fiat" },
             };
 
-            cars = new List<ICar>()
+            cars = new List<IBook>()
             {
                 new BO.Car()
                 {
                     ID = 1,
-                    Producer = producers[0],
+                    Publisher = producers[0],
                     Name = "Fabia",
-                    ProductionYear = 2020,
-                    Transmission = TransmissionType.Automatic,
+                    YearPublished = 2020,
+                    Type = BookType.Automatic,
                 },
                 new BO.Car()
                 {
                     ID = 2,
-                    Producer = producers[0],
+                    Publisher = producers[0],
                     Name = "Octavia",
-                    ProductionYear = 2022,
-                    Transmission = TransmissionType.Automatic,
+                    YearPublished = 2022,
+                    Type = BookType.Automatic,
                 },
                 new BO.Car()
                 {
                     ID = 3,
-                    Producer = producers[1],
+                    Publisher = producers[1],
                     Name = "Panda",
-                    ProductionYear = 2019,
-                    Transmission = TransmissionType.Manual,
+                    YearPublished = 2019,
+                    Type = BookType.Manual,
                 },
             };
         }
 
-        public ICar CreateNewCar()
+        public IBook CreateNewBook()
         {
             return new BO.Car();
         }
 
-        public IProducer CreateNewProducer()
+        public IPublisher CreateNewProducer()
         {
             return new BO.Producer();
         }
 
-        public IEnumerable<ICar> GetAllCars()
+        public IEnumerable<IBook> GetAllBooks()
         {
             return cars;
         }
 
-        public IEnumerable<IProducer> GetAllProducers()
+        public IEnumerable<IPublisher> GetAllPublishers()
         {
             return producers;
         }

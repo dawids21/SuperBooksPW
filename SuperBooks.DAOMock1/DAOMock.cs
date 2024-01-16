@@ -1,8 +1,10 @@
 ﻿using SuperBooks.Core;
+using SuperBooks.DAOMock1.BO;
 using SuperBooks.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,64 +12,138 @@ namespace SuperBooks.DAOMock1
 {
     public class DAOMock : IDAO
     {
-        private List<IProducer> producers;
-        private List<ICar> cars;
+        private List<IPublisher> publishers;
+        private List<IBook> books;
+        private int NextId { get; set; } = 3;
 
         public DAOMock()
         {
-            producers = new List<IProducer>()
+            publishers = new List<IPublisher>()
             {
-                new BO.Producer() { ID = 1, Name = "Audi" },
-                new BO.Producer() { ID = 2, Name = "BMW" },
-            };
-
-            cars = new List<ICar>()
-            {
-                new BO.Car()
+                new Publisher
                 {
                     ID = 1,
-                    Producer = producers[0],
-                    Name = "Q3",
-                    ProductionYear = 2020,
-                    Transmission = TransmissionType.Automatic,
-                },
-                new BO.Car()
+                    Name = "Test",
+                    Address = "zielona 2",
+                    YearCreated = 2022
+                }
+            };
+
+            books = new List<IBook>()
+            {
+
+                new Book
                 {
                     ID = 2,
-                    Producer = producers[0],
-                    Name = "RS6",
-                    ProductionYear = 2022,
-                    Transmission = TransmissionType.Automatic,
-                },
-                new BO.Car()
-                {
-                    ID = 3,
-                    Producer = producers[1],
-                    Name = "X5",
-                    ProductionYear = 2019,
-                    Transmission = TransmissionType.Manual,
-                },
+                    Name = "Test",
+                    Type = BookType.Ebook,
+                    YearPublished = 2023,
+                    Publisher = publishers[0]
+                }
             };
         }
 
-        public ICar CreateNewCar()
+        public IBook CreateNewBook(IBook book)
         {
-            return new BO.Car();
+            book.ID = NextId;
+            NextId += 1;
+            books.Add(book);
+            return book;
         }
 
-        public IProducer CreateNewProducer()
+        public IPublisher CreateNewPublisher(IPublisher publisher)
         {
-            return new BO.Producer();
+            publisher.ID = NextId;
+            NextId += 1;
+            publishers.Add(publisher);
+            return publisher;
+
         }
 
-        public IEnumerable<ICar> GetAllCars()
+        public IEnumerable<IBook> GetAllBooks()
         {
-            return cars;
+            return books;
         }
 
-        public IEnumerable<IProducer> GetAllProducers()
+        public IEnumerable<IPublisher> GetAllPublishers()
         {
-            return producers;
+            return publishers;
+        }
+
+        public void EditPublisher(IPublisher publisher)
+        {
+            int i = 0;
+            for (i = 0; i < publishers.Count(); i++)
+            {
+                if (publishers[i].ID == publisher.ID)
+                {
+                    break;
+                }
+            }
+            publishers[i] = publisher;
+        }
+
+        public void DeletePublisher(IPublisher publisher)
+        {
+            int i = 0;
+            for (i = 0; i < publishers.Count(); i++)
+            {
+                if (publishers[i].ID == publisher.ID)
+                {
+                    break;
+                }
+            }
+            publishers.RemoveAt(i);
+        }
+
+        public void EditBook(IBook book)
+        {
+            int i = 0;
+            for (i = 0; i < books.Count(); i++)
+            {
+                if (books[i].ID == book.ID)
+                {
+                    break;
+                }
+            }
+            books[i] = book;
+        }
+
+        public void DeleteBook(IBook book)
+        {
+            int i = 0;
+            for (i = 0; i < books.Count(); i++)
+            {
+                if (books[i].ID == book.ID)
+                {
+                    break;
+                }
+            }
+            publishers.RemoveAt(i);
+        }
+
+        public IBook GetBook(int id)
+        {
+            for (int i = 0; i < books.Count(); i++)
+            {
+                if (books[i].ID == id)
+                {
+                    return books[i];
+                }
+            }
+            return null;
+        }
+
+        public IPublisher GetPublisher(int id)
+        {
+            for (int i = 0; i < publishers.Count(); i++)
+            {
+                if (publishers[i].ID == id)
+                {
+                    return publishers[i];
+                }
+            }
+            return null;
         }
     }
 }

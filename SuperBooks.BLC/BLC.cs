@@ -24,7 +24,7 @@ namespace SuperBooks.BLC
             dao = (IDAO) Activator.CreateInstance(typeToCreate!, null)!;
         }
 
-        public IEnumerable<ICar> GetCars() => dao.GetAllCars();
-        public IEnumerable<IProducer> GetProducers() => dao.GetAllProducers();
+        public IEnumerable<IBook> GetBooks() => dao.GetAllBooks();
+        public IEnumerable<IPublisher> GetPublishers() => dao.GetAllPublishers();
     }
 }

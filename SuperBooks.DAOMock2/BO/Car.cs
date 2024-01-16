@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace SuperBooks.DAOMock2.BO
 {
-    public class Car : ICar
+    public class Car : IBook
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public IProducer Producer { get; set; }
-        public int ProductionYear { get; set; }
-        public TransmissionType Transmission { get; set; }
+        public IPublisher Publisher { get; set; }
+        public int YearPublished { get; set; }
+        public BookType Type { get; set; }
     }
 }

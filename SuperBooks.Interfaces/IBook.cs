@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace SuperBooks.Interfaces
 {
-    public interface ICar
+    public interface IBook
     {
         int ID { get; set; }
         string Name { get; set; }
-        IProducer Producer { get; set; }
-        int ProductionYear { get; set; }
-        TransmissionType Transmission { get; set; }
+        IPublisher Publisher { get; set; }
+        int YearPublished { get; set; }
+        BookType Type { get; set; }
     }
 }

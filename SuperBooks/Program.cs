@@ -7,14 +7,14 @@ internal class Program
     {
         string libraryName = System.Configuration.ConfigurationManager.AppSettings["DBLibraryName"]!;
         BLC blc = new BLC(libraryName);
-        foreach (IProducer p in blc.GetProducers())
+        foreach (IPublisher p in blc.GetPublishers())
         {
             Console.WriteLine($"{p.ID}: {p.Name}");
         }
         Console.WriteLine("-------------------");
-        foreach (ICar c in blc.GetCars())
+        foreach (IBook c in blc.GetBooks())
         {
-            Console.WriteLine($"{c.ID}: {c.Producer.Name} {c.Name} ({c.ProductionYear}) {c.Transmission}");
+            Console.WriteLine($"{c.ID}: {c.Publisher.Name} {c.Name} ({c.YearPublished}) {c.Type}");
         }
     }
 }
