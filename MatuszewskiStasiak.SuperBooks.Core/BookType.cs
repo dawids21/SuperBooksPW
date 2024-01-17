@@ -1,4 +1,4 @@
-﻿namespace SuperBooks.Core
+﻿namespace MatuszewskiStasiak.SuperBooks.Core
 {
     public enum BookType
     {

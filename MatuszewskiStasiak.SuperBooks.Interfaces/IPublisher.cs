@@ -1,4 +1,4 @@
-﻿namespace SuperBooks.Interfaces
+﻿namespace MatuszewskiStasiak.SuperBooks.Interfaces
 {
     public interface IPublisher
     {

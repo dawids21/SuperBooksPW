@@ -1,5 +1,5 @@
-﻿using SuperBooks.BLC;
-using SuperBooks.Interfaces;
+﻿using MatuszewskiStasiak.SuperBooks.BLC;
+using MatuszewskiStasiak.SuperBooks.Interfaces;
 
 internal class Program
 {

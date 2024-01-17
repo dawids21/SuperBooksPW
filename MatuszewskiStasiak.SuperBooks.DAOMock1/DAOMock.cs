@@ -1,6 +1,6 @@
-﻿using SuperBooks.Core;
-using SuperBooks.DAOMock1.BO;
-using SuperBooks.Interfaces;
+﻿using MatuszewskiStasiak.SuperBooks.Core;
+using MatuszewskiStasiak.SuperBooks.DAOMock1.BO;
+using MatuszewskiStasiak.SuperBooks.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperBooks.DAOMock1
+namespace MatuszewskiStasiak.SuperBooks.DAOMock1
 {
     public class DAOMock : IDAO
     {

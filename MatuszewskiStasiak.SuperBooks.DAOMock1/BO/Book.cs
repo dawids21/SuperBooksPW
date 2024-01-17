@@ -1,12 +1,12 @@
-﻿using SuperBooks.Core;
-using SuperBooks.Interfaces;
+﻿using MatuszewskiStasiak.SuperBooks.Core;
+using MatuszewskiStasiak.SuperBooks.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperBooks.DAOMock1.BO
+namespace MatuszewskiStasiak.SuperBooks.DAOMock1.BO
 {
     public class Book : IBook
     {

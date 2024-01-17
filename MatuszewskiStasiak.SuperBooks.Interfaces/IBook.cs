@@ -1,11 +1,11 @@
-﻿using SuperBooks.Core;
+﻿using MatuszewskiStasiak.SuperBooks.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperBooks.Interfaces
+namespace MatuszewskiStasiak.SuperBooks.Interfaces
 {
     public interface IBook
     {

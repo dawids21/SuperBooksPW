@@ -1,11 +1,11 @@
-﻿using SuperBooks.Interfaces;
+﻿using MatuszewskiStasiak.SuperBooks.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperBooks.DAOMock1.BO
+namespace MatuszewskiStasiak.SuperBooks.DAOMock1.BO
 {
     public class Publisher : IPublisher
     {

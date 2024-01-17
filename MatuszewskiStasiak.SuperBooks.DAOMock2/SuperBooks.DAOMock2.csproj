@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SuperBooks.Core\SuperBooks.Core.csproj" />
+    <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Core\SuperBooks.Core.csproj" />
+    <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Interfaces\SuperBooks.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

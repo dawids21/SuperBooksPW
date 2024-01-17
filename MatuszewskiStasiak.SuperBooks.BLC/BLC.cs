@@ -1,7 +1,7 @@
-﻿using SuperBooks.Interfaces;
+﻿using MatuszewskiStasiak.SuperBooks.Interfaces;
 using System.Reflection;
 
-namespace SuperBooks.BLC
+namespace MatuszewskiStasiak.SuperBooks.BLC
 {
     public class BLC // should be singleton
     {
