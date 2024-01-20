@@ -65,16 +65,39 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Core\MatuszewskiStasiak.SuperBooks.Core.csproj" />
+	  <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Interfaces\MatuszewskiStasiak.SuperBooks.Interfaces.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Reference Include="Cars.DB_1">
 	    <HintPath>Cars.DB_1.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Interfaces">
 	    <HintPath>Interfaces.dll</HintPath>
 	  </Reference>
+	  <Reference Include="MatuszewskiStasiak.SuperBooks.DAOMock">
+	    <HintPath>MatuszewskiStasiak.SuperBooks.DAOMock.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MatuszewskiStasiak.SuperBooks.DAOSQL">
+	    <HintPath>MatuszewskiStasiak.SuperBooks.DAOSQL.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="CarsPage.xaml.cs">
+	    <DependentUpon>CarsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="BooksPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="CarsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PublishersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

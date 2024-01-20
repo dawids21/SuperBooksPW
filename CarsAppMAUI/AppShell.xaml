@@ -14,8 +14,14 @@
             Route="CarsPage" />
 
         <ShellContent
-            Title="strona główna"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            Title="Publishers List"
+            ContentTemplate="{DataTemplate local:PublishersPage}"
             Route="MainPage" />
+        <ShellContent
+            Title="Books List"
+            ContentTemplate="{DataTemplate local:BooksPage}"
+            Route="MainPage" />
+
+
     </FlyoutItem>
 </Shell>

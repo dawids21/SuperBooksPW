@@ -20,8 +20,10 @@ namespace CarsAppMAUI
 
             builder.Services.AddSingleton<CarCollectionViewModel>();
             builder.Services.AddSingleton<CarsPage>();
+            builder.Services.AddSingleton<BooksPage>();
+            builder.Services.AddSingleton<PublishersPage>();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
