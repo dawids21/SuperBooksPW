@@ -54,12 +54,18 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             return book;
         }
 
-        public IPublisher CreateNewPublisher(IPublisher publisher)
+        public IPublisher CreateNewPublisher(string name, string address, int yearCreated)
         {
-            publisher.ID = Guid.NewGuid();
+            var publisher = new Publisher
+            {
+                ID = Guid.NewGuid(),
+                Name = name,
+                Address = address,
+                YearCreated = yearCreated,
+                Books = new List<IBook>()
+            };
             publishers.Add(publisher);
             return publisher;
-
         }
 
         public IEnumerable<IBook> GetAllBooks()
@@ -72,25 +78,27 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             return publishers;
         }
 
-        public void EditPublisher(IPublisher publisher)
+        public void EditPublisher(Guid id, string name, string address, int yearCreated)
         {
             int i;
             for (i = 0; i < publishers.Count(); i++)
             {
-                if (publishers[i].ID == publisher.ID)
+                if (publishers[i].ID.Equals(id))
                 {
                     break;
                 }
             }
-            publishers[i] = publisher;
+            publishers[i].Name = name;
+            publishers[i].Address = address;
+            publishers[i].YearCreated = yearCreated;
         }
 
-        public void DeletePublisher(IPublisher publisher)
+        public void DeletePublisher(Guid id)
         {
             int i;
             for (i = 0; i < publishers.Count(); i++)
             {
-                if (publishers[i].ID == publisher.ID)
+                if (publishers[i].ID.Equals(id))
                 {
                     break;
                 }
@@ -124,7 +132,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             publishers.RemoveAt(i);
         }
 
-        public IBook GetBook(Guid id)
+        public IBook? GetBook(Guid id)
         {
             for (int i = 0; i < books.Count(); i++)
             {
@@ -136,7 +144,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             return null;
         }
 
-        public IPublisher GetPublisher(Guid id)
+        public IPublisher? GetPublisher(Guid id)
         {
             for (int i = 0; i < publishers.Count(); i++)
             {

@@ -10,14 +10,14 @@ namespace MatuszewskiStasiak.SuperBooks.Interfaces
     {
         IEnumerable<IPublisher> GetAllPublishers();
         IEnumerable<IBook> GetAllBooks();
-        IPublisher CreateNewPublisher(IPublisher publisher);
+        IPublisher CreateNewPublisher(string name, string address, int yearCreated);
         IBook CreateNewBook(IBook book);
-        void EditPublisher(IPublisher publisher);
-        void DeletePublisher(IPublisher publisher);
+        void EditPublisher(Guid id, string name, string address, int yearCreated);
+        void DeletePublisher(Guid id);
         void EditBook(IBook book);
         void DeleteBook(IBook book);
-        IBook GetBook(Guid id);
-        IPublisher GetPublisher(Guid id);
+        IBook? GetBook(Guid id);
+        IPublisher? GetPublisher(Guid id);
 
         //TODO get all years publishers and books
     }

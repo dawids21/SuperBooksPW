@@ -41,9 +41,19 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
             return null;
         }
 
-        public IPublisher CreateNewPublisher(IPublisher publisher)
+        public IPublisher CreateNewPublisher(string name, string address, int yearCreated)
         {
-            return null;
+            Publisher publisher = new Publisher
+            {
+                ID = Guid.NewGuid(),
+                Name = name,
+                Address = address,
+                YearCreated = yearCreated,
+                Books = new List<IBook>()
+            };
+            Publishers.Add(publisher);
+            SaveChanges();
+            return publisher;
         }
 
         public IEnumerable<IBook> GetAllBooks()
@@ -56,12 +66,26 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
             return Publishers.ToList();
         }
 
-        public void EditPublisher(IPublisher publisher)
+        public void EditPublisher(Guid id, string name, string address, int yearCreated)
         {
+            Publisher? publisher = Publishers.Find(id);
+            if (publisher != null)
+            {
+                publisher.Name = name;
+                publisher.Address = address;
+                publisher.YearCreated = yearCreated;
+                SaveChanges();
+            }
         }
 
-        public void DeletePublisher(IPublisher publisher)
+        public void DeletePublisher(Guid id)
         {
+            Publisher? publisher = Publishers.Find(id);
+            if (publisher != null)
+            {
+                Publishers.Remove(publisher);
+                SaveChanges();
+            }
         }
 
         public void EditBook(IBook book)
@@ -72,14 +96,14 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
         {
         }
 
-        public IBook GetBook(Guid id)
+        public IBook? GetBook(Guid id)
         {
-            return null;
+           return Books.Find(id);
         }
 
-        public IPublisher GetPublisher(Guid id)
+        public IPublisher? GetPublisher(Guid id)
         {
-            return null;
+            return Publishers.Find(id);
         }
     }
 }
