@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Core\MatuszewskiStasiak.SuperBooks.Core.csproj" />
     <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Interfaces\MatuszewskiStasiak.SuperBooks.Interfaces.csproj" />
   </ItemGroup>

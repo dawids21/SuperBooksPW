@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MatuszewskiStasiak.SuperBooks.Web/MatuszewskiStasiak.SuperBooks.DAOMock.dll
+/MatuszewskiStasiak.SuperBooks.Web/MatuszewskiStasiak.SuperBooks.DAOSQL.dll
+/MatuszewskiStasiak.SuperBooks.Web/superbooks.db

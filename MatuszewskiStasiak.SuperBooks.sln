@@ -9,15 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatuszewskiStasiak.SuperBoo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatuszewskiStasiak.SuperBooks.Interfaces", "MatuszewskiStasiak.SuperBooks.Interfaces\MatuszewskiStasiak.SuperBooks.Interfaces.csproj", "{347F2896-3322-4AEE-9077-33C5A6075F2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatuszewskiStasiak.SuperBooks.DAOMock1", "MatuszewskiStasiak.SuperBooks.DAOMock1\MatuszewskiStasiak.SuperBooks.DAOMock1.csproj", "{F90368E7-B008-4FAA-A67E-B598F79B9B87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatuszewskiStasiak.SuperBooks.DAOMock", "MatuszewskiStasiak.SuperBooks.DAOMock\MatuszewskiStasiak.SuperBooks.DAOMock.csproj", "{F90368E7-B008-4FAA-A67E-B598F79B9B87}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatuszewskiStasiak.SuperBooks.BLC", "MatuszewskiStasiak.SuperBooks.BLC\MatuszewskiStasiak.SuperBooks.BLC.csproj", "{F283CEAE-AA4D-467E-AA41-ECA3FE42E15D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsAppMAUI", "CarsAppMAUI\CarsAppMAUI.csproj", "{CCB76F7D-672C-475F-876D-78E846CE24D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatuszewskiStasiak.SuperBooks.Web", "MatuszewskiStasiak.SuperBooks.Web\MatuszewskiStasiak.SuperBooks.Web.csproj", "{5A760E9D-7679-468B-88D2-DBEFEE55C7E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatuszewskiStasiak.SuperBooks.Web", "MatuszewskiStasiak.SuperBooks.Web\MatuszewskiStasiak.SuperBooks.Web.csproj", "{5A760E9D-7679-468B-88D2-DBEFEE55C7E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatuszewskiStasiak.SuperBooks.DAOSQL", "MatuszewskiStasiak.SuperBooks.DAOSQL\MatuszewskiStasiak.SuperBooks.DAOSQL.csproj", "{E9674870-0C9F-4793-BDD4-B871E2A61DF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatuszewskiStasiak.SuperBooks.DAOSQL", "MatuszewskiStasiak.SuperBooks.DAOSQL\MatuszewskiStasiak.SuperBooks.DAOSQL.csproj", "{E9674870-0C9F-4793-BDD4-B871E2A61DF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

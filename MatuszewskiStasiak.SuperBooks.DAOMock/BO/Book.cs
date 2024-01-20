@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MatuszewskiStasiak.SuperBooks.DAOMock1.BO
+namespace MatuszewskiStasiak.SuperBooks.DAOMock.BO
 {
     public class Book : IBook
     {

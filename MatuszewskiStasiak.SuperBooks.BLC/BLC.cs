@@ -1,4 +1,5 @@
 ﻿using MatuszewskiStasiak.SuperBooks.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 namespace MatuszewskiStasiak.SuperBooks.BLC
@@ -7,8 +8,9 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
     {
         private IDAO dao;
 
-        public BLC(string libraryName)
+        public BLC(IConfiguration configuration)
         {
+            string libraryName = System.Configuration.ConfigurationManager.AppSettings["DBLibraryName"]!;
             Assembly assembly = Assembly.UnsafeLoadFrom(libraryName);
             Type? typeToCreate = null;
 
@@ -20,8 +22,15 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
                     break;
                 }
             }
-            // we should check if we are really creating the instance of IDAO
-            dao = (IDAO) Activator.CreateInstance(typeToCreate!, null)!;
+            ConstructorInfo? constructor = typeToCreate!.GetConstructor(new[] { typeof(IConfiguration) });
+            if (constructor != null)
+            {
+                dao = (IDAO)constructor.Invoke(new object[] { configuration })!;
+            }
+            else
+            {
+                dao = (IDAO)Activator.CreateInstance(typeToCreate!, null)!;
+            }
         }
 
         public IEnumerable<IBook> GetBooks() => dao.GetAllBooks();

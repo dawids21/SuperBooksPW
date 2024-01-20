@@ -1,11 +1,10 @@
 using MatuszewskiStasiak.SuperBooks.BLC;
+using MatuszewskiStasiak.SuperBooks.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-string libraryName = System.Configuration.ConfigurationManager.AppSettings["DBLibraryName"]!;
-BLC blc = new BLC(libraryName);
-builder.Services.AddSingleton(blc);
+builder.Services.AddSingleton<BLC>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
