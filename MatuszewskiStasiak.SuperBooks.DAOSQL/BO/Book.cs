@@ -1,16 +1,16 @@
-﻿using SuperBooks.Core;
-using SuperBooks.Interfaces;
+﻿using MatuszewskiStasiak.SuperBooks.Core;
+using MatuszewskiStasiak.SuperBooks.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperBooks.DAOMock2.BO
+namespace MatuszewskiStasiak.SuperBooks.DAOMock1.BO
 {
-    public class Car : IBook
+    public class Book : IBook
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public IPublisher Publisher { get; set; }
         public int YearPublished { get; set; }

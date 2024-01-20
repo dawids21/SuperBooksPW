@@ -2,9 +2,10 @@
 {
     public interface IPublisher
     {
-        int ID { get; set; }
+        Guid ID { get; set; }
         string Name { get; set; }
         string Address { get; set; }
         int YearCreated { get; set; }
+        List<IBook> Books { get; set; }
     }
 }

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace MatuszewskiStasiak.SuperBooks.DAOMock1
 {
-    public class DAOMock : IDAO
+    public class DAOSQL : IDAO
     {
         private List<IPublisher> publishers;
         private List<IBook> books;
 
-        public DAOMock()
+        public DAOSQL()
         {
             var examplePublisher = new Publisher
             {

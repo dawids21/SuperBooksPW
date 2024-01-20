@@ -16,8 +16,8 @@ namespace MatuszewskiStasiak.SuperBooks.Interfaces
         void DeletePublisher(IPublisher publisher);
         void EditBook(IBook book);
         void DeleteBook(IBook book);
-        IBook GetBook(int id);
-        IPublisher GetPublisher(int id);
+        IBook GetBook(Guid id);
+        IPublisher GetPublisher(Guid id);
 
         //TODO get all years publishers and books
     }

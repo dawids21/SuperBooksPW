@@ -10,7 +10,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock1.BO
 {
     public class Book : IBook
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public IPublisher Publisher { get; set; }
         public int YearPublished { get; set; }
