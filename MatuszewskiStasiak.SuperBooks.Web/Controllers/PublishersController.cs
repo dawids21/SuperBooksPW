@@ -10,7 +10,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
     {
         private readonly BLC.BLC _blc;
 
-        public PublishersController(DataContext context, BLC.BLC blc)
+        public PublishersController(BLC.BLC blc)
         {
             _blc = blc;
         }

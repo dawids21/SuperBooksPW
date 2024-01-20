@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.BLC\MatuszewskiStasiak.SuperBooks.BLC.csproj" />
     <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Core\MatuszewskiStasiak.SuperBooks.Core.csproj" />
+    <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.DAOMock\MatuszewskiStasiak.SuperBooks.DAOMock.csproj" />
     <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.DAOSQL\MatuszewskiStasiak.SuperBooks.DAOSQL.csproj" />
     <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Interfaces\MatuszewskiStasiak.SuperBooks.Interfaces.csproj" />
   </ItemGroup>

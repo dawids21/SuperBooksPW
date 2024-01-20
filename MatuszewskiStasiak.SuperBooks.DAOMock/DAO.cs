@@ -47,10 +47,23 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             };
         }
 
-        public IBook CreateNewBook(IBook book)
+        public IBook CreateNewBook(string name, Guid publisherID, int yearPublished, BookType type)
         {
-            book.ID = Guid.NewGuid();
+            Publisher? publisher = (Publisher?)GetPublisher(publisherID);
+            if (publisher == null)
+            {
+                throw new ArgumentException("Publisher not found");
+            }
+            Book book = new Book
+            {
+                ID = Guid.NewGuid(),
+                Name = name,
+                Publisher = publisher,
+                YearPublished = yearPublished,
+                Type = type
+            };
             books.Add(book);
+            publisher.Books.Add(book);
             return book;
         }
 
@@ -103,33 +116,42 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
                     break;
                 }
             }
+            books.RemoveAll(book => book.Publisher.ID == publishers[i].ID);
             publishers.RemoveAt(i);
         }
 
-        public void EditBook(IBook book)
+        public void EditBook(Guid id, string name, Guid publisherID, int yearPublished, BookType type)
         {
             int i;
             for (i = 0; i < books.Count(); i++)
             {
-                if (books[i].ID == book.ID)
+                if (books[i].ID == id)
                 {
                     break;
                 }
             }
-            books[i] = book;
+            Publisher? publisher = (Publisher?)GetPublisher(publisherID);
+            if (publisher == null)
+            {
+                throw new ArgumentException("Publisher not found");
+            }
+            books[i].Name = name;
+            books[i].Publisher = publisher;
+            books[i].YearPublished = yearPublished;
+            books[i].Type = type;
         }
 
-        public void DeleteBook(IBook book)
+        public void DeleteBook(Guid id)
         {
             int i;
             for (i = 0; i < books.Count(); i++)
             {
-                if (books[i].ID == book.ID)
+                if (books[i].ID == id)
                 {
                     break;
                 }
             }
-            publishers.RemoveAt(i);
+            books.RemoveAt(i);
         }
 
         public IBook? GetBook(Guid id)

@@ -36,9 +36,24 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
         public virtual DbSet<Publisher> Publishers{ get; set; }
         public virtual DbSet<Book> Books { get; set; }
 
-        public IBook CreateNewBook(IBook book)
+        public IBook CreateNewBook(string name, Guid publisherID, int yearPublished, BookType type)
         {
-            return null;
+            Publisher? publisher = Publishers.Find(publisherID);
+            if (publisher == null)
+            {
+                throw new ArgumentException("Publisher not found");
+            }
+            Book book = new Book
+            {
+                ID = Guid.NewGuid(),
+                Name = name,
+                Publisher = publisher,
+                YearPublished = yearPublished,
+                Type = type
+            };
+            Books.Add(book);
+            SaveChanges();
+            return book;
         }
 
         public IPublisher CreateNewPublisher(string name, string address, int yearCreated)
@@ -58,7 +73,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
 
         public IEnumerable<IBook> GetAllBooks()
         {
-            return Books.ToList();
+            return Books.Include(b => b.Publisher).ToList();
         }
 
         public IEnumerable<IPublisher> GetAllPublishers()
@@ -88,12 +103,32 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
             }
         }
 
-        public void EditBook(IBook book)
+        public void EditBook(Guid id, string name, Guid publisherID, int yearPublished, BookType type)
         {
+            Book? book = Books.Find(id);
+            if (book != null)
+            {
+                Publisher? publisher = Publishers.Find(publisherID);
+                if (publisher == null)
+                {
+                    throw new ArgumentException("Publisher not found");
+                }
+                book.Name = name;
+                book.Publisher = publisher;
+                book.YearPublished = yearPublished;
+                book.Type = type;
+                SaveChanges();
+            }
         }
 
-        public void DeleteBook(IBook book)
+        public void DeleteBook(Guid id)
         {
+            Book? book = Books.Find(id);
+            if (book != null)
+            {
+                Books.Remove(book);
+                SaveChanges();
+            }
         }
 
         public IBook? GetBook(Guid id)
