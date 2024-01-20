@@ -20,8 +20,20 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
         }
 
         // GET: Books
-        public IActionResult Index()
+        public IActionResult Index(string searchName)
         {
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                ViewData["SearchName"] = searchName;
+                return View(_blc.FilterBooksByName(searchName).Select(b => new BookDetails()
+                {
+                    ID = b.ID,
+                    Name = b.Name,
+                    Publisher = b.Publisher.Name,
+                    YearPublished = b.YearPublished,
+                    Type = b.Type
+                }));
+            }
             return View(_blc.GetBooks().Select(b => new BookDetails()
             {
                 ID = b.ID,
