@@ -44,5 +44,13 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
         public void EditPublisher(Guid id, string name, string address, int yearCreated) => dao.EditPublisher(id, name, address, yearCreated);
         public void DeleteBook(Guid id) => dao.DeleteBook(id);
         public void DeletePublisher(Guid id) => dao.DeletePublisher(id);
+        public IEnumerable<IPublisher> FilterPublishersByName(string name)
+        {
+            return dao.GetAllPublishers().Where(p => p.Name.ToLower().Contains(name.ToLower()));
+        }
+        public IEnumerable<IBook> FilterBooksByName(string name)
+        {
+            return dao.GetAllBooks().Where(p => p.Name.ToLower().Contains(name.ToLower()));
+        }
     }
 }

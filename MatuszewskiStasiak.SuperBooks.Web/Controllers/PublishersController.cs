@@ -16,8 +16,13 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
         }
 
         // GET: Publishers
-        public IActionResult Index()
+        public IActionResult Index(string searchName)
         {
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                ViewData["SearchName"] = searchName;
+                return View(_blc.FilterPublishersByName(searchName));
+            }
             return View(_blc.GetPublishers());
         }
 
