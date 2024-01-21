@@ -34,6 +34,11 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
             }
         }
 
+        public BLC(IDAO dao)
+        {
+            this.dao = dao;
+        }
+
         public IEnumerable<IBook> GetBooks() => dao.GetAllBooks();
         public IEnumerable<IPublisher> GetPublishers() => dao.GetAllPublishers();
         public IBook? GetBook(Guid id) => dao.GetBook(id);
