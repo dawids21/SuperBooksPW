@@ -9,7 +9,7 @@ namespace MatuszewskiStasiak.SuperBooks.Interfaces
 {
     public interface IBook
     {
-        Guid Id { get; set; }
+        Guid ID { get; set; }
         string Name { get; set; }
         IPublisher Publisher { get; set; }
         int YearPublished { get; set; }

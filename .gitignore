@@ -364,3 +364,5 @@ FodyWeavers.xsd
 /MatuszewskiStasiak.SuperBooks.Web/MatuszewskiStasiak.SuperBooks.DAOMock.dll
 /MatuszewskiStasiak.SuperBooks.Web/MatuszewskiStasiak.SuperBooks.DAOSQL.dll
 /MatuszewskiStasiak.SuperBooks.Web/superbooks.db
+/MatuszewskiStasiak.SuperBooks.Web/superbooks.db-shm
+/MatuszewskiStasiak.SuperBooks.Web/superbooks.db-wal

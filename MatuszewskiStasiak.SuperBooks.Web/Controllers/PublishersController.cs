@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MatuszewskiStasiak.SuperBooks.DAOSQL.BO;
 using MatuszewskiStasiak.SuperBooks.BLC;
 using MatuszewskiStasiak.SuperBooks.Web.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
 {
@@ -16,14 +17,23 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
         }
 
         // GET: Publishers
-        public IActionResult Index(string searchName)
+        public IActionResult Index(string searchName, string yearCreated)
         {
-            if (!string.IsNullOrEmpty(searchName))
+            ViewData["SearchName"] = searchName;
+            IEnumerable<SelectListItem> yearsCreated = _blc.GetAllYearsCreated()
+                .Select(y => new SelectListItem() { Text = y.ToString(), Value = y.ToString() })
+                .Prepend(new SelectListItem() { Text = "", Value = "" })
+                .ToList();
+            foreach (SelectListItem item in yearsCreated)
             {
-                ViewData["SearchName"] = searchName;
-                return View(_blc.FilterPublishersByName(searchName));
+                if (item.Value == yearCreated)
+                {
+                    item.Selected = true;
+                    break;
+                }
             }
-            return View(_blc.GetPublishers());
+            ViewData["YearsCreated"] = yearsCreated;
+            return View(_blc.FilterPublishers(searchName, yearCreated));
         }
 
         // GET: Publishers/Details/5
