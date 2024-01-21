@@ -57,13 +57,38 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
             }
             return publishers;
         }
-        public IEnumerable<IBook> FilterBooksByName(string name)
+        public IEnumerable<IBook> FilterBooks(string name, string yearPublished, string type, string publisher)
         {
-            return dao.GetAllBooks().Where(p => p.Name.ToLower().Contains(name.ToLower()));
+            IEnumerable<IBook> books = dao.GetAllBooks();
+            if (!string.IsNullOrEmpty(name))
+            {
+                books = books.Where(b => b.Name.ToLower().Contains(name.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(yearPublished))
+            {
+                books = books.Where(b => int.Parse(yearPublished) == b.YearPublished);
+            }
+            if (!string.IsNullOrEmpty(type))
+            {
+                books = books.Where(b => Enum.Parse<BookType>(type) == b.Type);
+            }
+            if (!string.IsNullOrEmpty(publisher))
+            {
+                books = books.Where(b => b.Publisher.ID == Guid.Parse(publisher));
+            }
+            return books;
         }
         public IEnumerable<int> GetAllYearsCreated()
         {
             return dao.GetAllPublishers().Select(p => p.YearCreated).Distinct().Order();
+        }
+        public IEnumerable<int> GetAllYearsPublished()
+        {
+            return dao.GetAllBooks().Select(b => b.YearPublished).Distinct().Order();
+        }
+        public IEnumerable<IPublisher> GetBooksPublishers()
+        {
+            return dao.GetAllBooks().Select(b => b.Publisher).Distinct();
         }
     }
 }

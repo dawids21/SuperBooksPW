@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MatuszewskiStasiak.SuperBooks.DAOSQL.BO;
 using MatuszewskiStasiak.SuperBooks.Web.Models;
+using MatuszewskiStasiak.SuperBooks.Core;
 
 namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
 {
@@ -20,21 +21,50 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
         }
 
         // GET: Books
-        public IActionResult Index(string searchName)
+        public IActionResult Index(string searchName, string yearPublished, string type, string publisher)
         {
-            if (!string.IsNullOrEmpty(searchName))
+            ViewData["SearchName"] = searchName;
+            IEnumerable<SelectListItem> yearsPublished = _blc.GetAllYearsPublished()
+                .Select(y => new SelectListItem() { Text = y.ToString(), Value = y.ToString() })
+                .Prepend(new SelectListItem() { Text = "All", Value = "" })
+                .ToList();
+            foreach (SelectListItem item in yearsPublished)
             {
-                ViewData["SearchName"] = searchName;
-                return View(_blc.FilterBooksByName(searchName).Select(b => new BookDetails()
+                if (item.Value == yearPublished)
                 {
-                    ID = b.ID,
-                    Name = b.Name,
-                    Publisher = b.Publisher.Name,
-                    YearPublished = b.YearPublished,
-                    Type = b.Type
-                }));
+                    item.Selected = true;
+                    break;
+                }
             }
-            return View(_blc.GetBooks().Select(b => new BookDetails()
+            ViewData["YearsPublished"] = yearsPublished;
+            IEnumerable<SelectListItem> types = Enum.GetValues(typeof(BookType))
+                .Cast<BookType>()
+                .Select(y => new SelectListItem() { Text = y.ToString(), Value = y.ToString() })
+                .Prepend(new SelectListItem() { Text = "All", Value = "" })
+                .ToList();
+            foreach (SelectListItem item in types)
+            {
+                if (item.Value == type)
+                {
+                    item.Selected = true;
+                    break;
+                }
+            }
+            ViewData["Types"] = types;
+            IEnumerable<SelectListItem> publishers = _blc.GetBooksPublishers()
+                .Select(y => new SelectListItem() { Text = y.Name, Value = y.ID.ToString() })
+                .Prepend(new SelectListItem() { Text = "All", Value = "" })
+                .ToList();
+            foreach (SelectListItem item in publishers)
+            {
+                if (item.Value == publisher)
+                {
+                    item.Selected = true;
+                    break;
+                }
+            }
+            ViewData["Publishers"] = publishers;
+            return View(_blc.FilterBooks(searchName, yearPublished, type, publisher).Select(b => new BookDetails()
             {
                 ID = b.ID,
                 Name = b.Name,

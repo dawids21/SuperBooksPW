@@ -22,7 +22,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             ViewData["SearchName"] = searchName;
             IEnumerable<SelectListItem> yearsCreated = _blc.GetAllYearsCreated()
                 .Select(y => new SelectListItem() { Text = y.ToString(), Value = y.ToString() })
-                .Prepend(new SelectListItem() { Text = "", Value = "" })
+                .Prepend(new SelectListItem() { Text = "All", Value = "" })
                 .ToList();
             foreach (SelectListItem item in yearsCreated)
             {
