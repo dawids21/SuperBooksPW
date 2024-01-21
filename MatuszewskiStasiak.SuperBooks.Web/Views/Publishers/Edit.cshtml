@@ -1,4 +1,4 @@
-﻿@model MatuszewskiStasiak.SuperBooks.Interfaces.IPublisher
+﻿@model MatuszewskiStasiak.SuperBooks.Web.Models.PublisherEdit
 
 @{
     ViewData["Title"] = "Edit";
@@ -28,7 +28,7 @@
                 <input asp-for="YearCreated" class="form-control" />
                 <span asp-validation-for="YearCreated" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 5px">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

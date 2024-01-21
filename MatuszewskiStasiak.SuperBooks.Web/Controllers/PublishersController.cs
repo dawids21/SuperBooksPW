@@ -33,7 +33,13 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
                 }
             }
             ViewData["YearsCreated"] = yearsCreated;
-            return View(_blc.FilterPublishers(searchName, yearCreated));
+            return View(_blc.FilterPublishers(searchName, yearCreated).Select(p => new PublisherDetails()
+            {
+                ID = p.ID,
+                Name = p.Name,
+                Address = p.Address,
+                YearCreated = p.YearCreated
+            }));
         }
 
         // GET: Publishers/Details/5
@@ -49,8 +55,14 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             {
                 return NotFound();
             }
-
-            return View(publisher);
+            PublisherDetails publisherDetails = new PublisherDetails()
+            {
+                ID = publisher.ID,
+                Name = publisher.Name,
+                Address = publisher.Address,
+                YearCreated = publisher.YearCreated
+            };
+            return View(publisherDetails);
         }
 
         // GET: Publishers/Create
@@ -87,8 +99,14 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             {
                 return NotFound();
             }
-
-            return View(publisher);
+            PublisherEdit publisherEdit = new PublisherEdit()
+            {
+                ID = publisher.ID,
+                Name = publisher.Name,
+                Address = publisher.Address,
+                YearCreated = publisher.YearCreated
+            };
+            return View(publisherEdit);
         }
 
         // POST: Publishers/Edit/5
@@ -124,8 +142,14 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             {
                 return NotFound();
             }
-
-            return View(publisher);
+            PublisherDetails publisherDelete = new PublisherDetails()
+            {
+                ID = publisher.ID,
+                Name = publisher.Name,
+                Address = publisher.Address,
+                YearCreated = publisher.YearCreated
+            };
+            return View(publisherDelete);
         }
 
         // POST: Publishers/Delete/5

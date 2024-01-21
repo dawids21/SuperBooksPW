@@ -87,7 +87,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             {
                 return NotFound();
             }
-            BookDetails bookDelete = new BookDetails()
+            BookDetails bookDetails = new BookDetails()
             {
                 ID = book.ID,
                 Name = book.Name,
@@ -95,7 +95,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
                 YearPublished = book.YearPublished,
                 Type = book.Type
             };
-            return View(bookDelete);
+            return View(bookDetails);
         }
 
         // GET: Books/Create
