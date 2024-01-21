@@ -138,7 +138,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
 
         public IPublisher? GetPublisher(Guid id)
         {
-            return Publishers.Find(id);
+            return Publishers.Include(p => p.Books).FirstOrDefault(p => p.ID == id);
         }
     }
 }

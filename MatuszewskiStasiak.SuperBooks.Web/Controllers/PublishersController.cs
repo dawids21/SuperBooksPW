@@ -60,7 +60,15 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
                 ID = publisher.ID,
                 Name = publisher.Name,
                 Address = publisher.Address,
-                YearCreated = publisher.YearCreated
+                YearCreated = publisher.YearCreated,
+                Books = publisher.Books.Select(b => new BookDetails()
+                {
+                    ID = b.ID,
+                    Name = b.Name,
+                    Publisher = publisher.Name,
+                    YearPublished = b.YearPublished,
+                    Type = b.Type
+                }).ToList()
             };
             return View(publisherDetails);
         }

@@ -10,5 +10,6 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Models
         public string Name { get; set; }
         [Display(Name = "Year created")]
         public int YearCreated { get; set; }
+        public List<BookDetails> Books { get; set; }
     }
 }

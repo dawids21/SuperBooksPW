@@ -1,0 +1,9 @@
+﻿@using MatuszewskiStasiak.SuperBooks.Web.Models
+<li style="cursor: pointer" class="list-group-item list-group-item-action" onclick="@(() => NavigationManager.NavigateTo($"/Books/Details/{Book.ID}"))">@Book.Name | @Book.YearPublished</li>
+
+@code {
+    [Parameter]
+    public BookDetails Book { get; set; }
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+}
