@@ -45,7 +45,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
             }
             Book book = new Book
             {
-                ID = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = name,
                 Publisher = publisher,
                 YearPublished = yearPublished,

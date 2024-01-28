@@ -28,7 +28,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
 
             var exampleBook = new Book
             {
-                ID = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = "Test",
                 Type = BookType.Ebook,
                 YearPublished = 2023,
@@ -56,7 +56,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             }
             Book book = new Book
             {
-                ID = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = name,
                 Publisher = publisher,
                 YearPublished = yearPublished,
@@ -125,7 +125,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             int i;
             for (i = 0; i < books.Count(); i++)
             {
-                if (books[i].ID == id)
+                if (books[i].Id == id)
                 {
                     break;
                 }
@@ -146,7 +146,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
             int i;
             for (i = 0; i < books.Count(); i++)
             {
-                if (books[i].ID == id)
+                if (books[i].Id == id)
                 {
                     break;
                 }
@@ -158,7 +158,7 @@ namespace MatuszewskiStasiak.SuperBooks.DAOMock
         {
             for (int i = 0; i < books.Count(); i++)
             {
-                if (books[i].ID == id)
+                if (books[i].Id == id)
                 {
                     return books[i];
                 }

@@ -66,7 +66,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             ViewData["Publishers"] = publishers;
             return View(_blc.FilterBooks(searchName, yearPublished, type, publisher).Select(b => new BookDetails()
             {
-                ID = b.ID,
+                ID = b.Id,
                 Name = b.Name,
                 Publisher = b.Publisher.Name,
                 YearPublished = b.YearPublished,
@@ -89,7 +89,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             }
             BookDetails bookDetails = new BookDetails()
             {
-                ID = book.ID,
+                ID = book.Id,
                 Name = book.Name,
                 Publisher = book.Publisher.Name,
                 YearPublished = book.YearPublished,
@@ -141,7 +141,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
 
             BookEdit bookEdit = new BookEdit()
             {
-                ID = book.ID,
+                ID = book.Id,
                 Name = book.Name,
                 Publisher = book.Publisher.ID,
                 YearPublished = book.YearPublished,
@@ -188,7 +188,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
             }
             BookDetails bookDelete = new BookDetails()
             {
-                ID = book.ID,
+                ID = book.Id,
                 Name = book.Name,
                 Publisher = book.Publisher.Name,
                 YearPublished = book.YearPublished,
