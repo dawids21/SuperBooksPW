@@ -12,7 +12,9 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
         public BLC(IConfiguration configuration)
         {
             string libraryName = System.Configuration.ConfigurationManager.AppSettings["DBLibraryName"]!;
-            Assembly assembly = Assembly.UnsafeLoadFrom(libraryName);
+            string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string libraryPath = string.Join("\\", path, libraryName);
+            Assembly assembly = Assembly.UnsafeLoadFrom(libraryPath);
             Type? typeToCreate = null;
 
             foreach (Type type in assembly.GetTypes())

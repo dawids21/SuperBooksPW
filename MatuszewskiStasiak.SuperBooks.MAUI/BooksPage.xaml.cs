@@ -1,6 +1,4 @@
-using CarsAppMAUI.ViewModels;
-
-namespace CarsAppMAUI;
+namespace MatuszewskiStasiak.SuperBooks.MAUI;
 
 public partial class BooksPage : ContentPage
 {

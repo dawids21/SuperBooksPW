@@ -1,10 +1,7 @@
-﻿
-using CarsAppMAUI.ViewModels;
-using CommunityToolkit.Maui;
-using MatuszewskiStasiak.SuperBooks.BLC;
+﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 
-namespace CarsAppMAUI
+namespace MatuszewskiStasiak.SuperBooks.MAUI
 {
     public static class MauiProgram
     {
@@ -18,10 +15,11 @@ namespace CarsAppMAUI
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                }); 
-            //builder.Services.AddSingleton<BookCollectionViewModel>();
-            //builder.Services.AddSingleton<BooksPage>();
-            //builder.Services.AddSingleton<BLC>();
+                });
+            builder.Services.AddSingleton<BookCollectionViewModel>();
+            builder.Services.AddSingleton<BooksPage>();
+            builder.Services.AddSingleton<BLC.BLC>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
