@@ -149,7 +149,7 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI.ViewModels
             return BookEdit != null &&
                 BookEdit.Name != null &&
                 BookEdit.Name.Length > 1 &&
-                BookEdit.YearPublished > 1880 &&
+                BookEdit.YearPublished > 0 &&
                 BookEdit.YearPublished <= 2024;
         }
 
