@@ -1,17 +1,106 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MatuszewskiStasiak.SuperBooks.MAUI.BooksPage"
+             x:Name="BooksContentPageName"
              Title="BooksPage"
              xmlns:viewmodel="clr-namespace:MatuszewskiStasiak.SuperBooks.MAUI.ViewModels"
              >
+
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <toolkit:EnumToIntConverter x:Key="EnumToIntConverter"/>
+                    <viewmodel:MyEnumToIntConverter x:Key="Myconverter"/>
+                </ResourceDictionary>
+            </ContentPage.Resources>
+
+
     <VerticalStackLayout>
-        <ListView ItemsSource="{Binding Books}">
+
+        <StackLayout Orientation="Horizontal" Margin="10">
+            <Label Text="Filter By:" VerticalOptions="Center" FontSize="18" />
+            <Picker Margin="10,10,10,10" x:Name="FilterCriteriaPicker" SelectedItem="{Binding SelectedFilterCriteria}" WidthRequest="200">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Name</x:String>
+                        <x:String>Publisher Name</x:String>
+                        <x:String>Type</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry Placeholder="Search Text" Text="{Binding SearchText}" WidthRequest="300" Margin="10"/>
+
+            <Button Text="Search" Margin="10" BackgroundColor="CornflowerBlue" Command="{Binding SearchCommand}"></Button>
+        </StackLayout>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Text="Name" FontAttributes="Bold"
+                VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+            <Label Grid.Column="1" Text="Year of publication" FontAttributes="Bold"
+                VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+            <Label Grid.Column="2" Text="Type" FontAttributes="Bold"
+                VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+            <Label Grid.Column="3" Text="Publisher" FontAttributes="Bold"
+                VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+        </Grid>
+        <ListView x:Name="BookList" ItemsSource="{Binding Books}" ItemTapped ="ListView_ItemTapped_1"  MaximumHeightRequest="300">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
+                    <ViewCell>
+                        <Border Stroke="Gray" StrokeThickness="1" Padding="7">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Data Labels -->
+                                <Label Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold"
+                                        VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+                                <Label Grid.Column="1" Text="{Binding YearPublished}" FontAttributes="Bold"
+                                        VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+                                <Label Grid.Column="2" Text="{Binding Type}" FontAttributes="Bold"
+                                        VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+                                <Label Grid.Column="3" Text="{Binding Publisher.Name}" FontAttributes="Bold"
+                                        VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+                            </Grid>
+                        </Border>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto"
+                  ColumnDefinitions="*, 2*, 8*"
+                  BindingContext="{Binding BookEdit}" Margin="10">
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Name}" IsEnabled="{Binding IsEditing}" Margin="10" WidthRequest="300" HeightRequest="40" VerticalOptions="Start"/>
+            <Label Grid.Row="0" Grid.Column="0" Text="Name" VerticalOptions="Start" WidthRequest="100"/>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding YearPublished}" WidthRequest="300" HeightRequest="40" VerticalOptions="Start"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Year of Publication" VerticalOptions="Start" WidthRequest="100"/>
+            <Picker Grid.Row="2" Grid.Column="1" ItemsSource="{Binding AllBooksTypes}" Margin="10"
+                SelectedIndex="{Binding Type, Converter={StaticResource Myconverter}}, ConverterParameter={x:Type interfaces:BookType}, Mode=TwoWay}" 
+                TextColor="White" WidthRequest="300" HeightRequest="40" VerticalOptions="Start"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="Type" VerticalOptions="Start" WidthRequest="100"/>
+            <Picker ItemsSource="{Binding BindingContext.AllPublishers, Source={x:Reference BooksContentPageName}}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding Publisher}" WidthRequest="200"
+                    Grid.Row="3" Grid.Column="1" VerticalOptions="Start" />
+            <Label Grid.Row="3" Grid.Column="0" Text="Publisher" VerticalOptions="Start" WidthRequest="100" />
+        </Grid>
+        <HorizontalStackLayout>
+            <Button x:Name="CreateButton" Text="New Book" Margin="10" BackgroundColor="CornflowerBlue" Command="{Binding CreateNewBookCommand}"></Button>
+            <Button Text="Save" Margin="10" BackgroundColor="LightGreen" Command="{Binding SaveBookCommand}"></Button>
+            <Button Text="Delete" Margin="10" BackgroundColor="Red" Command="{Binding DeleteBookCommand}"></Button>
+            <Button Text="Cancel" Margin="10" BackgroundColor="LightSlateGray"  Command="{Binding CancelCommand}"></Button>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

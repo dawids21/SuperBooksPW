@@ -74,6 +74,10 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
@@ -86,6 +90,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.BLC\MatuszewskiStasiak.SuperBooks.BLC.csproj" />
 	  <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Core\MatuszewskiStasiak.SuperBooks.Core.csproj" />
+	  <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.DAOSQL\MatuszewskiStasiak.SuperBooks.DAOSQL.csproj" />
 	  <ProjectReference Include="..\MatuszewskiStasiak.SuperBooks.Interfaces\MatuszewskiStasiak.SuperBooks.Interfaces.csproj" />
 	</ItemGroup>
 
@@ -100,6 +105,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="BooksPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PublishersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

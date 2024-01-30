@@ -7,7 +7,7 @@ namespace MatuszewskiStasiak.SuperBooks.UnitTests
     {
         public class BookMock : IBook
         {
-            public Guid ID { get; set; }
+            public Guid Id { get; set; }
             public string Name { get; set; }
             public IPublisher Publisher { get; set; }
             public int YearPublished { get; set; }

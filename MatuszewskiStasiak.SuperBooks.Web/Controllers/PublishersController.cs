@@ -63,7 +63,7 @@ namespace MatuszewskiStasiak.SuperBooks.Web.Controllers
                 YearCreated = publisher.YearCreated,
                 Books = publisher.Books.Select(b => new BookDetails()
                 {
-                    ID = b.ID,
+                    ID = b.Id,
                     Name = b.Name,
                     Publisher = publisher.Name,
                     YearPublished = b.YearPublished,

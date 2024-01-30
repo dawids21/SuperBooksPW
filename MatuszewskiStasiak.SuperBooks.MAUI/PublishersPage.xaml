@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MatuszewskiStasiak.SuperBooks.MAUI.PublishersPage"
+             Title="PublishersPage">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Text="Name" FontAttributes="Bold"
+                    VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+            <Label Grid.Column="1" Text="Address" FontAttributes="Bold"
+                    VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+            <Label Grid.Column="2" Text="Year of creation" FontAttributes="Bold"
+                    VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+        </Grid>
+        <ListView x:Name="ProducersList" ItemsSource="{Binding Publishers}" ItemTapped="ListView_ItemTapped" MaximumHeightRequest="300">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Border Stroke="Gray" StrokeThickness="1" Padding="7">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Name}"
+                               VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+                                <Label Grid.Column="1" Text="{Binding Address}" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+                                <Label Grid.Column="2" Text="{Binding YearCreated}" FontAttributes="Bold"
+                               VerticalOptions="Center" HorizontalOptions="Center" FontSize="18" />
+                            </Grid>
+                        </Border>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid HorizontalOptions="StartAndExpand" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*, 2*, 8*" BindingContext="{Binding PublisherEdit}" Margin="10">
+
+
+
+            <Entry Margin="10" Grid.Row="0" Grid.Column="1" Text="{Binding Name}" WidthRequest="200"/>
+            <Label Grid.Row="0" Grid.Column="0" Text="Name"/>
+            <Entry Margin="10" Grid.Row="1" Grid.Column="1" Text="{Binding Address}" IsEnabled="{Binding IsEditing}" WidthRequest="150"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Address"/>
+            <Entry Margin="10" Grid.Row="2" Grid.Column="1" Text="{Binding YearCreated}" IsEnabled="{Binding IsEditing}" WidthRequest="150"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="Year of Creation"/>
+        </Grid>
+
+
+        <HorizontalStackLayout >
+            <Button Text="New Producer" Margin="10" BackgroundColor="CornflowerBlue" Command="{Binding CreateNewPublisherCommand}"></Button>
+            <Button Text="Save" Margin="10" BackgroundColor="LightGreen" Command="{Binding SavePublisherCommand}"></Button>
+            <Button Text="Delete" Margin="10" BackgroundColor="Red" Command="{Binding DeletePublisherCommand}"></Button>
+            <Button Text="Cancel" Margin="10" BackgroundColor="LightSlateGray"  Command="{Binding CancelCommand}"></Button>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

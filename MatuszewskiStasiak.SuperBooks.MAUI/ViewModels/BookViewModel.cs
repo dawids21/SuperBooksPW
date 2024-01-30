@@ -8,7 +8,7 @@ using MatuszewskiStasiak.SuperBooks.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MatuszewskiStasiak.SuperBooks.Core;
 
-namespace MatuszewskiStasiak.SuperBooks.MAUI
+namespace MatuszewskiStasiak.SuperBooks.MAUI.ViewModels
 {
     public partial class BookViewModel : ObservableObject, IBook
     {
@@ -35,6 +35,18 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI
             Type = book.Type;
             Id = book.Id;
         }
+
+        public BookViewModel()
+        {
+            Type = BookType.Ebook;
+        }
+
+        public object Clone()
+        {
+            return new BookViewModel(this);
+        }
+
+        public IReadOnlyList<string> AllBooksTypes {  get; } = Enum.GetNames(typeof(BookType));
 
     }
 }

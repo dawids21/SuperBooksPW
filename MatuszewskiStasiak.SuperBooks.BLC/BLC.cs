@@ -1,6 +1,7 @@
 ﻿using MatuszewskiStasiak.SuperBooks.Core;
 using MatuszewskiStasiak.SuperBooks.Interfaces;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace MatuszewskiStasiak.SuperBooks.BLC
@@ -12,9 +13,11 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
         public BLC(IConfiguration configuration)
         {
             string libraryName = System.Configuration.ConfigurationManager.AppSettings["DBLibraryName"]!;
+            
             string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string libraryPath = string.Join("\\", path, libraryName);
             Assembly assembly = Assembly.UnsafeLoadFrom(libraryPath);
+            
             Type? typeToCreate = null;
 
             foreach (Type type in assembly.GetTypes())
@@ -25,6 +28,7 @@ namespace MatuszewskiStasiak.SuperBooks.BLC
                     break;
                 }
             }
+            
             ConstructorInfo? constructor = typeToCreate!.GetConstructor(new[] { typeof(IConfiguration) });
             if (constructor != null)
             {

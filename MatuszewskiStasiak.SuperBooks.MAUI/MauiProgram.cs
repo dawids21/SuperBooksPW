@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using MatuszewskiStasiak.SuperBooks.MAUI.ViewModels;
 
 namespace MatuszewskiStasiak.SuperBooks.MAUI
 {
@@ -17,7 +18,9 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
             builder.Services.AddSingleton<BookCollectionViewModel>();
+            builder.Services.AddSingleton<PublisherCollectionViewModel>();
             builder.Services.AddSingleton<BooksPage>();
+            builder.Services.AddSingleton<PublishersPage>();
             builder.Services.AddSingleton<BLC.BLC>();
 
 #if DEBUG

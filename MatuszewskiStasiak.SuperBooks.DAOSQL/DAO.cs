@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +23,24 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
             _configuration = configuration;
         }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(_configuration.GetConnectionString("Sqlite"));
+            string currentDirectory = AppContext.BaseDirectory;
+
+            while (currentDirectory != null)
+            {
+                if (Directory.GetFiles(currentDirectory, "*.csproj").Length > 0 ||
+                    Directory.GetFiles(currentDirectory, "*.sln").Length > 0)
+                {
+                    break;
+                }
+                currentDirectory = Path.GetDirectoryName(currentDirectory);
+            }
+
+            string dbPath = Path.Combine(currentDirectory, "superbooks.db");
+
+            optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -73,7 +90,15 @@ namespace MatuszewskiStasiak.SuperBooks.DAOSQL
 
         public IEnumerable<IBook> GetAllBooks()
         {
-            return Books.Include(b => b.Publisher).ToList();
+            try
+            {
+                return Books.Include(b => b.Publisher).ToList();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                throw;
+            }
         }
 
         public IEnumerable<IPublisher> GetAllPublishers()
