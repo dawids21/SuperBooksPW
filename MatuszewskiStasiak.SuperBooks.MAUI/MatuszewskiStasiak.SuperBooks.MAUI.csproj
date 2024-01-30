@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
+	  <None Remove="Resources\Images\book.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

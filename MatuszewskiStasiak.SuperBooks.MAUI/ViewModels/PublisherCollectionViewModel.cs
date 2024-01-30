@@ -59,6 +59,10 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI.ViewModels
                     return IsEditing || isCreating;
                 });
         }
+        private bool CanCreateNewPublisher()
+        {
+            return !IsEditing;
+        }
 
         [RelayCommand(CanExecute = nameof(CanCreateNewPublisher))]
         private void CreateNewPublisher()
@@ -69,9 +73,13 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI.ViewModels
             RefreshCanExecute();
         }
 
-        private bool CanCreateNewPublisher()
+        private bool CanEditPublisherBeSaved()
         {
-            return !IsEditing;
+            return this.PublisherEdit != null &&
+                   PublisherEdit.Name != null &&
+                   PublisherEdit.Name.Length >= 1 &&
+                   PublisherEdit.YearCreated >= 0 &&
+                   PublisherEdit.YearCreated <= 2024;
         }
 
         [RelayCommand(CanExecute = nameof(CanEditPublisherBeSaved))]
@@ -94,17 +102,6 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI.ViewModels
             ReloadPublishers();
         }
 
-        private bool CanEditPublisherBeSaved()
-        {
-            return this.PublisherEdit != null &&
-                   PublisherEdit.Name != null &&
-                   PublisherEdit.Name.Length >= 1;
-        }
-
-        public bool IsCurrentlyEditing()
-        {
-            return IsEditing || IsCreating;
-        }
 
 
         [RelayCommand(CanExecute = nameof(CanEditPublisherBeSaved))]
@@ -118,9 +115,22 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI.ViewModels
             ReloadPublishers();
         }
 
+        public bool IsCurrentlyEditing()
+        {
+            return IsEditing || IsCreating;
+        }
+
         void OnPublisherEditPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             SavePublisherCommand.NotifyCanExecuteChanged();
+        }
+
+        private void RefreshCanExecute()
+        {
+            CreateNewPublisherCommand.NotifyCanExecuteChanged();
+            SavePublisherCommand.NotifyCanExecuteChanged();
+            DeletePublisherCommand.NotifyCanExecuteChanged();
+            (CancelCommand as Command)?.ChangeCanExecute();
         }
 
 
@@ -131,14 +141,6 @@ namespace MatuszewskiStasiak.SuperBooks.MAUI.ViewModels
             IsEditing = true;
             IsCreating = false;
             RefreshCanExecute();
-        }
-
-        private void RefreshCanExecute()
-        {
-            CreateNewPublisherCommand.NotifyCanExecuteChanged();
-            SavePublisherCommand.NotifyCanExecuteChanged();
-            DeletePublisherCommand.NotifyCanExecuteChanged();
-            (CancelCommand as Command)?.ChangeCanExecute();
         }
 
         void ReloadPublishers()

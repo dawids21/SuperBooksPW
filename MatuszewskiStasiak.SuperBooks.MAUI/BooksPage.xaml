@@ -98,9 +98,9 @@
         </Grid>
         <HorizontalStackLayout>
             <Button x:Name="CreateButton" Text="New Book" Margin="10" BackgroundColor="CornflowerBlue" Command="{Binding CreateNewBookCommand}"></Button>
-            <Button Text="Save" Margin="10" BackgroundColor="LightGreen" Command="{Binding SaveBookCommand}"></Button>
+            <Button Text="Save" Margin="10" BackgroundColor="Green" Command="{Binding SaveBookCommand}"></Button>
             <Button Text="Delete" Margin="10" BackgroundColor="Red" Command="{Binding DeleteBookCommand}"></Button>
-            <Button Text="Cancel" Margin="10" BackgroundColor="LightSlateGray"  Command="{Binding CancelCommand}"></Button>
+            <Button Text="Cancel" Margin="10" BackgroundColor="Gray"  Command="{Binding CancelCommand}"></Button>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
